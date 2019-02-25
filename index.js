@@ -4,7 +4,7 @@ var hljs = require('highlight.js');
 // import hljs from 'highlight.js';
 
 var vueHighlightJS = {};
-vueHighlightJS.install = function install(Vue) {
+vueHighlightJS.install = function install(Vue, config) {
   Vue.directive('highlightjs', {
     deep: true,
     bind: function bind(el, binding) {
@@ -21,7 +21,7 @@ vueHighlightJS.install = function install(Vue) {
           // instead of the element content.
           target.textContent = binding.value;
         }
-
+        hljs.configure(config);
         hljs.highlightBlock(target);
       }
     },
